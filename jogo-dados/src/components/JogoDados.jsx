@@ -37,7 +37,7 @@ export function JogoDados() {
             {rodadas < 5 && (
                 <div className="totCot">
                     <div className="container text-center">
-                        <h1>Rodada {rodadas} de 5</h1>
+                        <h1>Rodada {rodadas + 1} de 5</h1>
                         <p>Placar: J1 {somaTotalJ1} x {somaTotalJ2} J2</p>
                         <div className="row align-items-start">
                             <div className="col">
