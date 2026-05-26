@@ -11,7 +11,7 @@
   "dependencies": {
     "@fontsource/great-vibes": "^5.2.8",
     "bootstrap": "^5.3.8",
-    "next": "15.3.5",
+    "next": "15.3.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-github-calendar": "^5.0.6"
