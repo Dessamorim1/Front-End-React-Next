@@ -1,0 +1,273 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f5f3f1;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(125, 25, 206, 0.1);
+  background: #f5f3f1;
+}
+
+.navbar-brand {
+  font-family: "Playfair Display", serif;
+  font-size: 1.7rem;
+  font-style: italic;
+  color: #c18aff;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.nav-link {
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9c67da !important;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.nav-link:hover {
+  color: #7a35c7 !important;
+}
+
+.cv-link {
+  color: #8731e9 !important;
+  font-weight: bold;
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 70px 90px;
+  min-height: calc(100vh - 90px);
+  background: #f5f3f1;
+}
+
+.hero-left {
+  max-width: 600px;
+}
+
+.subtitle {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #c18aff;
+  letter-spacing: 4px;
+  font-size: 14px;
+  margin-bottom: 35px;
+}
+
+.line {
+  width: 40px;
+  height: 2px;
+  background: #c18aff;
+}
+
+.hero-left h1 {
+  font-size: 110px;
+  line-height: 0.9;
+  color: #2d0b18;
+  font-family: Georgia, serif;
+  margin-bottom: 35px;
+}
+
+.hero-left h1 span {
+  color: #c18aff;
+  font-style: italic;
+}
+
+.hero-left p {
+  font-size: 20px;
+  line-height: 1.8;
+  color: #6b4b57;
+  margin-bottom: 40px;
+}
+
+.projects-button {
+  width: 200px;
+  height: 60px;
+  border-radius: 40px;
+  background: linear-gradient(90deg, #8731e9, #c18aff);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.projects-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(135, 49, 233, 0.3);
+}
+
+.hero-right {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-glow {
+  position: absolute;
+
+  width: 650px;
+  height: 650px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(193, 138, 255, 0.55) 0%,
+    rgba(135, 49, 233, 0.25) 35%,
+    rgba(255, 255, 255, 0) 75%
+  );
+
+  filter: blur(45px);
+  z-index: 1;
+}
+
+.profile-image {
+  position: relative;
+  width: 360px;
+  height: 460px;
+
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 2;
+  box-shadow: 0 25px 60px rgba(135, 49, 233, 0.25);
+}
+
+.img {
+  object-fit: cover;
+}
+
+.tag {
+  position: absolute;
+  top: 120px;
+  left: 90px;
+  background: linear-gradient(90deg, #8731e9, #c18aff);
+  color: white;
+  padding: 14px 22px;
+  border-radius: 18px;
+  font-weight: bold;
+  z-index: 3;
+}
+
+.card-info {
+  position: absolute;
+  bottom: 120px;
+  right: 70px;
+  width: 220px;
+  height: 110px;
+  background: white;
+  border-radius: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 28px;
+  z-index: 3;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.card-info h3 {
+  color: #c18aff;
+  font-size: 52px;
+  margin: 0;
+  font-family: Georgia, serif;
+}
+
+.card-info span {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #ceadf3;
+}
+
+@media (max-width: 1200px) {
+  .hero-section {
+    flex-direction: column;
+    gap: 70px;
+    text-align: center;
+  }
+
+  .subtitle {
+    justify-content: center;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-left h1 {
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 900px) {
+  nav {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .hero-section {
+    padding: 50px 30px;
+  }
+
+  .hero-right {
+    width: 100%;
+    height: 450px;
+  }
+
+  .profile-image {
+    width: 260px;
+    height: 340px;
+  }
+
+  .tag {
+    left: 20px;
+    top: 80px;
+  }
+
+  .card-info {
+    right: 20px;
+    bottom: 70px;
+  }
+
+  .hero-left h1 {
+    font-size: 60px;
+  }
+
+  .hero-left p {
+    font-size: 18px;
+  }
+}
