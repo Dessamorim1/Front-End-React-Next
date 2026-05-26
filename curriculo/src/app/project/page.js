@@ -1,6 +1,25 @@
 import "./project.css";
 
-export default function ProjectsPage() {
+async function getRepos() {
+  const response = await fetch(
+    "https://api.github.com/users/Dessamorim1/repos",
+    {
+      cache: "no-store",
+    }
+  );
+
+  return response.json();
+}
+
+export default async function ProjectsPage() {
+  const repos = await getRepos();
+
+  const filteredRepos = repos.filter(
+    (repo) =>
+      !repo.fork &&
+      repo.description
+  );
+
   return (
     <main className="projects-page">
       <div className="projects-header">
@@ -17,80 +36,57 @@ export default function ProjectsPage() {
       </div>
 
       <section className="projects-grid">
+        {filteredRepos.map((repo) => (
+          <div
+            className="project-card"
+            key={repo.id}
+          >
+            <div className="card-top">
+              <div className="icon-box">
+                💻
+              </div>
 
-        <div className="project-card">
-          <div className="card-top">
-            <div className="icon-box">💻</div>
-
-            <div className="category">
-              FULL STACK
-            </div>
-          </div>
-
-          <div className="card-content">
-            <h2>Sistema Web de Cotações</h2>
-
-            <p>
-              Sistema web desenvolvido em Flask integrado ao
-              SAP Business One via Service Layer. Permite
-              consultar, criar e atualizar cotações e
-              concorrentes em tempo real, com autenticação,
-              controle de sessão e interface interativa.
-            </p>
-
-            <div className="techs">
-              <span>Flask</span>
-              <span>SAP B1</span>
-              <span>JavaScript</span>
-              <span>HTML</span>
-              <span>CSS</span>
+              <div className="category">
+                {repo.language || "PROJECT"}
+              </div>
             </div>
 
-            <a
-              href="https://github.com/Dessamorim1/Sistema-Cotacoes-Flask"
-              target="_blank"
-            >
-              Ver projeto completo →
-            </a>
-          </div>
-        </div>
+            <div className="card-content">
+              <h2>
+                {repo.name.replaceAll("-", " ")}
+              </h2>
 
-        <div className="project-card">
-          <div className="card-top">
-            <div className="icon-box">🐱</div>
+              <p>
+                {repo.description}
+              </p>
 
-            <div className="category">
-              WEB DEVELOPMENT
+              {/* TECHS */}
+
+              <div className="techs">
+                {repo.language && (
+                  <span>
+                    {repo.language}
+                  </span>
+                )}
+
+                <span>
+                  ⭐ {repo.stargazers_count}
+                </span>
+
+                <span>
+                  🍴 {repo.forks_count}
+                </span>
+              </div>
+
+              <a
+                href={repo.html_url}
+                target="_blank"
+              >
+                Ver projeto completo →
+              </a>
             </div>
           </div>
-
-          <div className="card-content">
-            <h2>ONG de Adoção de Gatos</h2>
-
-            <p>
-              Projeto em desenvolvimento de plataforma web
-              para ONG de gatos, com funcionalidades de
-              cadastro, informações sobre adoção e área
-              administrativa para gerenciamento de conteúdo
-              e animais disponíveis.
-            </p>
-
-            <div className="techs">
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>JavaScript</span>
-              <span>PHP</span>
-              <span>MySQL</span>
-            </div>
-
-            <a
-              href="https://github.com/Dessamorim1/web-ong-gatos"
-              target="_blank"
-            >
-              Ver projeto completo →
-            </a>
-          </div>
-        </div>
+        ))}
       </section>
     </main>
   );
