@@ -1,0 +1,839 @@
+{
+  "info": {
+    "name": "API Currículo - Express + PostgreSQL",
+    "description": "Testes da API de currículos. Edite as variáveis da coleção (aba Variables) para trocar a URL e os ids usados nas requisições.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://SEU-PROJETO.vercel.app"
+    },
+    {
+      "key": "pessoaId",
+      "value": "1"
+    },
+    {
+      "key": "formacaoId",
+      "value": "1"
+    },
+    {
+      "key": "experienciaId",
+      "value": "1"
+    },
+    {
+      "key": "projetoId",
+      "value": "1"
+    },
+    {
+      "key": "habilidadeId",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Status da API",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            ""
+          ]
+        }
+      }
+    },
+    {
+      "name": "Pessoas",
+      "item": [
+        {
+          "name": "Listar Pessoas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar por id ({{pessoaId}})",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/{{pessoaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "{{pessoaId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Criar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas"
+              ]
+            },
+            "description": "Depois de criar, copie o \"id\" da resposta para a variável pessoaId.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Maria Oliveira\",\n  \"titulo\": \"Desenvolvedora Front-End\",\n  \"email\": \"maria@example.com\",\n  \"cidade\": \"Recife - PE\",\n  \"resumo\": \"Apaixonada por interfaces.\",\n  \"github\": \"https://github.com/maria\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Atualizar ({{pessoaId}})",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/{{pessoaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "{{pessoaId}}"
+              ]
+            },
+            "description": "Envie apenas os campos que deseja alterar.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Desenvolvedora Full Stack\",\n  \"cidade\": \"Jaboatão - PE\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Excluir ({{pessoaId}})",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/{{pessoaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "{{pessoaId}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Formações",
+      "item": [
+        {
+          "name": "Listar Formações",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/formacoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "formacoes"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar por id ({{formacaoId}})",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/formacoes/{{formacaoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "formacoes",
+                "{{formacaoId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Criar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/formacoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "formacoes"
+              ]
+            },
+            "description": "Depois de criar, copie o \"id\" da resposta para a variável formacaoId.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pessoa_id\": {{pessoaId}},\n  \"instituicao\": \"UNICAP\",\n  \"curso\": \"Sistemas para Internet\",\n  \"nivel\": \"Tecnólogo\",\n  \"data_inicio\": \"2024-02-01\",\n  \"data_fim\": null,\n  \"descricao\": \"Em andamento\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Atualizar ({{formacaoId}})",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/formacoes/{{formacaoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "formacoes",
+                "{{formacaoId}}"
+              ]
+            },
+            "description": "Envie apenas os campos que deseja alterar.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data_fim\": \"2026-12-15\",\n  \"descricao\": \"Concluído\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Excluir ({{formacaoId}})",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/formacoes/{{formacaoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "formacoes",
+                "{{formacaoId}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Experiências",
+      "item": [
+        {
+          "name": "Listar Experiências",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/experiencias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "experiencias"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar por id ({{experienciaId}})",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/experiencias/{{experienciaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "experiencias",
+                "{{experienciaId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Criar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/experiencias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "experiencias"
+              ]
+            },
+            "description": "Depois de criar, copie o \"id\" da resposta para a variável experienciaId.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pessoa_id\": {{pessoaId}},\n  \"empresa\": \"Empresa Exemplo\",\n  \"cargo\": \"Estagiária\",\n  \"data_inicio\": \"2026-03-01\",\n  \"atual\": true,\n  \"descricao\": \"Desenvolvimento web\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Atualizar ({{experienciaId}})",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/experiencias/{{experienciaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "experiencias",
+                "{{experienciaId}}"
+              ]
+            },
+            "description": "Envie apenas os campos que deseja alterar.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cargo\": \"Desenvolvedora Júnior\",\n  \"atual\": false,\n  \"data_fim\": \"2026-10-01\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Excluir ({{experienciaId}})",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/experiencias/{{experienciaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "experiencias",
+                "{{experienciaId}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Projetos",
+      "item": [
+        {
+          "name": "Listar Projetos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/projetos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projetos"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar por id ({{projetoId}})",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/projetos/{{projetoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projetos",
+                "{{projetoId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Criar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/projetos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projetos"
+              ]
+            },
+            "description": "Depois de criar, copie o \"id\" da resposta para a variável projetoId.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pessoa_id\": {{pessoaId}},\n  \"nome\": \"Meu Projeto\",\n  \"descricao\": \"Projeto de exemplo\",\n  \"tecnologias\": \"Node.js, Express\",\n  \"link_repositorio\": \"https://github.com/usuario/projeto\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Atualizar ({{projetoId}})",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/projetos/{{projetoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projetos",
+                "{{projetoId}}"
+              ]
+            },
+            "description": "Envie apenas os campos que deseja alterar.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"link_deploy\": \"https://meu-projeto.vercel.app\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Excluir ({{projetoId}})",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/projetos/{{projetoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projetos",
+                "{{projetoId}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Habilidades",
+      "item": [
+        {
+          "name": "Listar Habilidades",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/habilidades",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "habilidades"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar por id ({{habilidadeId}})",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/habilidades/{{habilidadeId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "habilidades",
+                "{{habilidadeId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Criar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/habilidades",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "habilidades"
+              ]
+            },
+            "description": "Depois de criar, copie o \"id\" da resposta para a variável habilidadeId.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"TypeScript\",\n  \"categoria\": \"Linguagem\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Atualizar ({{habilidadeId}})",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/habilidades/{{habilidadeId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "habilidades",
+                "{{habilidadeId}}"
+              ]
+            },
+            "description": "Envie apenas os campos que deseja alterar.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"categoria\": \"Linguagem de programação\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Excluir ({{habilidadeId}})",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/habilidades/{{habilidadeId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "habilidades",
+                "{{habilidadeId}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Relacionamentos",
+      "item": [
+        {
+          "name": "Currículo completo da pessoa",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/{{pessoaId}}/curriculo",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "{{pessoaId}}",
+                "curriculo"
+              ]
+            },
+            "description": "Pessoa + formações + experiências + projetos + habilidades."
+          }
+        },
+        {
+          "name": "Formações da pessoa (1:N)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/{{pessoaId}}/formacoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "{{pessoaId}}",
+                "formacoes"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Experiências da pessoa (1:N)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/{{pessoaId}}/experiencias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "{{pessoaId}}",
+                "experiencias"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Projetos da pessoa (1:N)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/{{pessoaId}}/projetos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "{{pessoaId}}",
+                "projetos"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Habilidades da pessoa (N:N)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/{{pessoaId}}/habilidades",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "{{pessoaId}}",
+                "habilidades"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Vincular habilidade à pessoa (N:N)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/{{pessoaId}}/habilidades",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "{{pessoaId}}",
+                "habilidades"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"habilidade_id\": {{habilidadeId}},\n  \"nivel\": \"Intermediário\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Alterar nível da habilidade (N:N)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/{{pessoaId}}/habilidades/{{habilidadeId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "{{pessoaId}}",
+                "habilidades",
+                "{{habilidadeId}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nivel\": \"Avançado\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Desvincular habilidade (N:N)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/{{pessoaId}}/habilidades/{{habilidadeId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "{{pessoaId}}",
+                "habilidades",
+                "{{habilidadeId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Pessoas que têm a habilidade (N:N inverso)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/habilidades/{{habilidadeId}}/pessoas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "habilidades",
+                "{{habilidadeId}}",
+                "pessoas"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
